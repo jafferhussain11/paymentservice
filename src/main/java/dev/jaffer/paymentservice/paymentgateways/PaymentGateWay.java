@@ -1,8 +1,8 @@
 package dev.jaffer.paymentservice.paymentgateways;
 
+import com.stripe.exception.StripeException;
+
 public interface PaymentGateWay {
 
-    String createPaymentLink(String email,
-                             Long amount,
-                             String phoneNumber);
+    String createPaymentLink(Long amount,String orderId) throws StripeException;
 }

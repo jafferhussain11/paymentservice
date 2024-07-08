@@ -1,5 +1,6 @@
 package dev.jaffer.paymentservice.controllers;
 
+import com.stripe.exception.StripeException;
 import dev.jaffer.paymentservice.dtos.CreatePaymentLinkRequestDto;
 import dev.jaffer.paymentservice.services.PaymentService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class PaymentController {
     }
 
     @PostMapping("/createPaymentLink")
-    public String createPaymentLink(@RequestBody CreatePaymentLinkRequestDto createPaymentLinkRequestDto){
+    public String createPaymentLink(@RequestBody CreatePaymentLinkRequestDto createPaymentLinkRequestDto) throws StripeException {
         return paymentService.createPaymentLink(createPaymentLinkRequestDto.getOrderId());
     }
 }
